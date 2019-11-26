@@ -122,7 +122,7 @@ public class VerticalCardSwiper: UIView {
     /// We use this tapGestureRecognizer for the tap recognizer.
     fileprivate var tapGestureRecognizer: UITapGestureRecognizer!
     /// We use this tapGestureRecognizer for the tap recognizer.
-    fileprivate var longPressGestureRecognizer: UILongPressGestureRecognizer!
+    fileprivate var longPressGestureRecognizer: UITapGestureRecognizer!
     /// We use this horizontalPangestureRecognizer for the vertical panning.
     fileprivate var horizontalPangestureRecognizer: UIPanGestureRecognizer!
     /// Stores a `CGRect` with the area that is swipeable to the user.
@@ -267,9 +267,9 @@ extension VerticalCardSwiper: UIGestureRecognizerDelegate {
         tapGestureRecognizer.cancelsTouchesInView = false
         verticalCardSwiperView.addGestureRecognizer(tapGestureRecognizer)
 
-        longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleHold))
+        longPressGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(handleHold))
+        longPressGestureRecognizer.numberOfTapsRequired = 2
         longPressGestureRecognizer.delegate = self
-        longPressGestureRecognizer.minimumPressDuration = 0.125
         longPressGestureRecognizer.cancelsTouchesInView = false
         verticalCardSwiperView.addGestureRecognizer(longPressGestureRecognizer)
 
