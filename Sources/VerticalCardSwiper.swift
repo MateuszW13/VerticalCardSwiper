@@ -264,6 +264,7 @@ extension VerticalCardSwiper: UIGestureRecognizerDelegate {
     fileprivate func setupGestureRecognizer() {
         tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(handleTap))
         tapGestureRecognizer.delegate = self
+        tapGestureRecognizer.cancelsTouchesInView = false
         verticalCardSwiperView.addGestureRecognizer(tapGestureRecognizer)
 
         longPressGestureRecognizer = UILongPressGestureRecognizer.init(target: self, action: #selector(handleHold))
@@ -273,6 +274,7 @@ extension VerticalCardSwiper: UIGestureRecognizerDelegate {
         verticalCardSwiperView.addGestureRecognizer(longPressGestureRecognizer)
 
         horizontalPangestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        horizontalPangestureRecognizer.cancelsTouchesInView = false
         horizontalPangestureRecognizer.maximumNumberOfTouches = 1
         horizontalPangestureRecognizer.delegate = self
         verticalCardSwiperView.addGestureRecognizer(horizontalPangestureRecognizer)
